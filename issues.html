@@ -76,6 +76,31 @@
           <button class="btn w-[120px]">Open</button>
           <button class="btn w-[120px]">Closed</button>
         </div>
+        <!-- Issues counting area -->
+        <div>
+          <div class="navbar bg-base-100 shadow-sm">
+            <!-- Icon -->
+            <div class="flex-none mr-4">
+              <img src="./assets/Aperture.png" alt="Aperture icon" />
+            </div>
+            <!-- Counting number -->
+            <div class="flex-1">
+              <h1 class="text-[#1F2937] font-semibold text-xl">
+                <span id="defaultCount">0</span> Issues
+              </h1>
+              <p class="text-[#64748B] text-[1rem]">Track and manage your project issues</p>
+            </div>
+            <!-- Color indication -->
+            <div class="flex-none">
+              <div class="flex gap-3 items-center">
+                <span class="bg-green-700 w-3 h-3 rounded-full inline-block"></span>
+                <p class="text-[#1F2937] font-medium text-[1rem]">Open</p>
+                <span class="bg-purple-600 w-3 h-3 rounded-full inline-block"></span>
+                <p class="text-[#1F2937] font-medium text-[1rem]">Closed</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <script src="./JS/issues.js"></script>
