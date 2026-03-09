@@ -1,6 +1,12 @@
 let allIssues = [];
 // Card Section
 const cardSection = document.getElementById("cardSection");
+const allBtn = document.getElementById("allBtn");
+const openBtn = document.getElementById("openBtn");
+const closedBtn = document.getElementById("closedBtn");
+// Search Card
+const searchBtn = document.getElementById("searchBtn");
+const searchInput = document.getElementById("searchInput");
 
 // Counting Section
 const count = document.getElementById("defaultCount");
@@ -321,9 +327,6 @@ const displayClosedCard = (arr) => {
     });
   });
 };
-const allBtn = document.getElementById("allBtn");
-const openBtn = document.getElementById("openBtn");
-const closedBtn = document.getElementById("closedBtn");
 
 // Active button
 function activeSectionBtn(id) {
@@ -355,13 +358,8 @@ closedBtn.addEventListener("click", function () {
   activeSectionBtn(closedBtn);
 });
 
-// Search Card
-const searchBtn = document.getElementById("searchBtn");
-const searchInput = document.getElementById("searchInput");
-
 searchBtn.addEventListener("click", function () {
-  const searchInputValue = searchInput.value;
-  console.log(searchInputValue);
+  const searchInputValue = searchInput.value.toLowerCase();
   loadSearchCard(searchInputValue);
 });
 const displaySearchCards = (arr) => {
@@ -372,7 +370,6 @@ const displaySearchCards = (arr) => {
     loadingAllCards();
   } else {
     arr.forEach((element) => {
-      console.log(element);
       const card = document.createElement("div");
       card.innerHTML = `
         <div  class="card h-full border-t-3 ${element.status === "open" ? `border-green-500` : `border-purple-600`}  bg-base-100 shadow-sm py-4 space-y-4">
