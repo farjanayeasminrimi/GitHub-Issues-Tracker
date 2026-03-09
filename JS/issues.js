@@ -309,17 +309,32 @@ const displayClosedCard = (arr) => {
 const allBtn = document.getElementById("allBtn");
 const openBtn = document.getElementById("openBtn");
 const closedBtn = document.getElementById("closedBtn");
-// document.getElementById("allBtn").addEventListener("click", function () {
-//   allCountFun(allIssues);
-//   console.log("add new");
-// });
+
+function activeSectionBtn(id) {
+  allBtn.classList.remove("bg-primary", "text-white");
+  openBtn.classList.remove("bg-primary", "text-white");
+  closedBtn.classList.remove("bg-primary", "text-white");
+
+  allBtn.classList.add("bg-base-300");
+  openBtn.classList.add("bg-base-300");
+  closedBtn.classList.add("bg-base-300");
+
+  const active = id;
+  active.classList.add("bg-primary", "text-white");
+}
+allBtn.addEventListener("click", function () {
+  activeSectionBtn(allBtn);
+  allCount(allIssues);
+});
 openBtn.addEventListener("click", function () {
   cardSection.innerHTML = "";
   displayOpenCard(allIssues);
   openCountFun(allIssues);
+  activeSectionBtn(openBtn);
 });
 closedBtn.addEventListener("click", function () {
   cardSection.innerHTML = "";
   displayClosedCard(allIssues);
   closeCountFun(allIssues);
+  activeSectionBtn(closedBtn);
 });
