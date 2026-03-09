@@ -1,5 +1,11 @@
 let allIssues = [];
+// Card Section
+const cardSection = document.getElementById("cardSection");
+
+// Counting Section
+const count = document.getElementById("defaultCount");
 function loadingAllCards() {
+  showSpinner(true);
   const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
   fetch(url)
     .then((res) => res.json())
@@ -30,6 +36,8 @@ const displayAllCards = (id) => {
   const cardSection = document.getElementById("cardSection");
 
   // Adding card to the section
+  showSpinner(false);
+
   id.forEach((element) => {
     const card = document.createElement("div");
     card.innerHTML = `
@@ -77,6 +85,7 @@ const displayAllCards = (id) => {
             </div>
       </div>
   `;
+
     cardSection.appendChild(card);
 
     // Add modals to each card
@@ -182,8 +191,6 @@ function setLabel(arr) {
 }
 loadingAllCards();
 
-// Counting Section
-const count = document.getElementById("defaultCount");
 const allCount = (arr) => {
   count.innerText = arr.length;
 };
@@ -196,9 +203,6 @@ const closeCountFun = (arr) => {
   const closeCardArr = arr.filter((element) => element.status === "closed");
   count.innerText = closeCardArr.length;
 };
-
-// Card Section
-const cardSection = document.getElementById("cardSection");
 
 // Tabs Section
 const displayOpenCard = (arr) => {
@@ -423,3 +427,15 @@ const displaySearchCards = (arr) => {
     count.innerText = arr.length;
   }
 };
+
+// spinner
+function showSpinner(status) {
+  const spinner = document.getElementById("spinner");
+  if (status) {
+    spinner.classList.remove("hidden");
+    cardSection.classList.add("hidden");
+  } else {
+    spinner.classList.add("hidden");
+    cardSection.classList.remove("hidden");
+  }
+}
