@@ -343,6 +343,8 @@ function activeSectionBtn(id) {
 }
 allBtn.addEventListener("click", function () {
   activeSectionBtn(allBtn);
+  cardSection.innerHTML = "";
+  loadingAllCards();
   allCount(allIssues);
 });
 openBtn.addEventListener("click", function () {
