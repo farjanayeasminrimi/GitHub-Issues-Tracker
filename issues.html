@@ -50,7 +50,7 @@
         </div>
         <!-- Search bar -->
         <div class="flex justify-between gap-4">
-          <label class="input">
+          <label class="input outline-none">
             <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <g
                 stroke-linejoin="round"
@@ -63,9 +63,17 @@
                 <path d="m21 21-4.3-4.3"></path>
               </g>
             </svg>
-            <input type="search" required placeholder="Search issues..." />
+            <input
+              id="searchInput"
+              class="outline-none"
+              type="search"
+              required
+              placeholder="Search issues..."
+            />
           </label>
-          <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+          <button id="searchBtn" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> New Issue
+          </button>
         </div>
       </div>
     </header>

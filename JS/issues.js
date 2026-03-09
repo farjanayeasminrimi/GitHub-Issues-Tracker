@@ -5,7 +5,6 @@ function loadingAllCards() {
     .then((res) => res.json())
     .then((data) => {
       allIssues = data.data;
-      console.log(allIssues);
       displayAllCards(data.data);
     });
 }
@@ -14,6 +13,18 @@ function loadCard(id) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayModalCard(data.data));
+}
+function loadSearchCard(inputValue) {
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${inputValue}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      if (inputValue.length === 0) {
+        loadingAllCards();
+      } else {
+        displaySearchCards(data.data);
+      }
+    });
 }
 const displayAllCards = (id) => {
   const cardSection = document.getElementById("cardSection");
@@ -310,6 +321,7 @@ const allBtn = document.getElementById("allBtn");
 const openBtn = document.getElementById("openBtn");
 const closedBtn = document.getElementById("closedBtn");
 
+// Active button
 function activeSectionBtn(id) {
   allBtn.classList.remove("bg-primary", "text-white");
   openBtn.classList.remove("bg-primary", "text-white");
@@ -338,3 +350,76 @@ closedBtn.addEventListener("click", function () {
   closeCountFun(allIssues);
   activeSectionBtn(closedBtn);
 });
+
+// Search Card
+const searchBtn = document.getElementById("searchBtn");
+const searchInput = document.getElementById("searchInput");
+
+searchBtn.addEventListener("click", function () {
+  const searchInputValue = searchInput.value;
+  console.log(searchInputValue);
+  loadSearchCard(searchInputValue);
+});
+const displaySearchCards = (arr) => {
+  const searchInputValue = searchInput.value;
+  console.log(arr);
+  cardSection.innerHTML = "";
+  if (searchInputValue.length === 0) {
+    loadingAllCards();
+  } else {
+    arr.forEach((element) => {
+      console.log(element);
+      const card = document.createElement("div");
+      card.innerHTML = `
+        <div  class="card h-full border-t-3 ${element.status === "open" ? `border-green-500` : `border-purple-600`}  bg-base-100 shadow-sm py-4 space-y-4">
+              <!-- status & Priority -->
+              <div class="flex justify-between px-4">
+                <div>
+                  ${element.status === "open" ? `<img src="./assets/Open-Status.png" alt="Open-Status" />` : `<img src="./assets/Closed- Status .png" alt="Closed-Status" />`}
+                </div>
+                ${
+                  element.priority === "high"
+                    ? `<button class="button px-8 bg-red-300 text-red-500 rounded-3xl">HIGH</button>`
+                    : element.priority === "medium"
+                      ? `<button class="button px-8 bg-orange-200 text-yellow-700 rounded-3xl">MEDIUM</button>`
+                      : `<button class="button px-8 bg-gray-200 text-gray-500  rounded-3xl">LOW</button>`
+                }
+              </div>
+              <!-- intro info -->
+              <div class="px-4 space-y-1">
+                <h1 class="text-[#000000] font-semibold text-xl">
+                  ${element.title}
+                </h1>
+                <p class="text-[#64748B] text-[1rem] text-justify">
+                  ${element.description}
+                </p>
+              </div>
+              <!-- levels -->
+              <div class="px-4 flex flex-wrap gap-2 justify-between">
+              ${setLabel(element.labels)}
+
+              </div>
+              <hr class="text-gray-300 w-100% col-span-2" />
+              <!-- author name -->
+              <div class="px-4 space-y-2 flex flex-col">
+                <span class="text-[#64748B] text-sm">#1 by ${element.author}</span>
+                <span class="text-[#64748B] text-sm">${new Date(
+                  element.createdAt,
+                ).toLocaleDateString("en-US", {
+                  month: "numeric",
+                  day: "numeric",
+                  year: "numeric",
+                })}</span>
+              </div>
+        </div>
+    `;
+      cardSection.appendChild(card);
+
+      // Add modals to each card
+      card.addEventListener("click", function () {
+        loadCard(element.id);
+      });
+    });
+    count.innerText = arr.length;
+  }
+};
