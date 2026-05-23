@@ -1,49 +1,123 @@
-### **API Endpoints:**
+# GitHub Issues Tracker
 
-### **All Issues:**
+A responsive GitHub Issues Tracker application that allows users to search repositories, view issues, and filter issue data using the GitHub API.
 
-- https://phi-lab-server.vercel.app/api/v1/lab/issues
+## Live Demo
 
-### **Single Issue:**
+Live Site:  
+https://farjanayeasminrimi.github.io/GitHub-Issues-Tracker/
 
-- https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}
+## Repository
 
-- Example: https://phi-lab-server.vercel.app/api/v1/lab/issue/33
+GitHub Repository:  
+https://github.com/farjanayeasminrimi/GitHub-Issues-Tracker
 
-### **Search Issue:** https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q={searchText}
+---
 
-- Example: https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
+## Project Overview
 
-## 🔑 Demo Credentials
+GitHub Issues Tracker is a frontend web application that helps users browse and track GitHub repository issues efficiently. The project uses the GitHub REST API to fetch real-time issue data and display it through a clean and responsive interface.
 
-```text
-Username: admin
-Password: admin123
+---
+
+## Tech Stack
+
+- React.js
+- JavaScript (ES6+)
+- HTML5
+- CSS3
+- GitHub REST API
+- GitHub Pages
+
+---
+
+## Main Features
+
+- Search GitHub repositories
+- View repository issues dynamically
+- Fetch real-time data from GitHub API
+- Filter and organize issues
+- Responsive user interface
+- Clean and modern design
+
+---
+
+## Installation & Local Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/farjanayeasminrimi/GitHub-Issues-Tracker.git
 ```
 
-1️⃣ What is the difference between var, let, and const?
+### 2. Navigate to the Project Folder
 
-#Answer:
-◻ Var is called function scope variable, it can be reassigned and redeclared in same scope.
-◻ Let is called block scope variable, it can be reassigned but cannot be redeclared inside same scope.
-◻ Const is called block scope variable, it cannot be redeclared or reassigned.
+```bash
+cd GitHub-Issues-Tracker
+```
 
-2️⃣ What is the spread operator (...)?
+### 3. Install Dependencies
 
-#Answer:
-◻ We use spread operator to copy an array or object and keep its value into another array or object.
+```bash
+npm install
+```
 
-3️⃣ What is the difference between map(), filter(), and forEach()?
+### 4. Start the Development Server
 
-#Answer:
-◻ We use map() to create a new array by modifying the value, filter() to create a new array by applying condition for matching elements to get into this new array, and forEach() to go through a loop to get each element and work on single element.
+```bash
+npm start
+```
 
-4️⃣ What is an arrow function?
+### 5. Open in Browser
 
-#Answer:
-◻ Arrow function is a short and clean version of function in ES6 where it is not hoisted like normal function. It doesn't have it's own this but it applies this from it's parent scope
+```bash
+http://localhost:3000
+```
 
-5️⃣ What are template literals?
+---
 
-#Answer:
-◻ We use template literals (``) to set dynamic value, multiline string in JavaScript
+## Project Structure
+
+```bash
+GitHub-Issues-Tracker/
+│
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── styles/
+│   └── App.js
+│
+├── package.json
+└── README.md
+```
+
+---
+
+## API Used
+
+GitHub REST API
+
+Documentation:  
+https://docs.github.com/en/rest
+
+---
+
+## Deployment
+
+This project is deployed using GitHub Pages.
+
+Deploy command:
+
+```bash
+npm run deploy
+```
+
+---
+
+## Author
+
+Farjana Yeasmin Rimi
+
+GitHub:  
+https://github.com/farjanayeasminrimi
